@@ -4,7 +4,7 @@ import { AuthGuard } from '@nestjs/passport';
 @Controller('users')
 export class UsersController {
   @Get()
-  @UseGuards(AuthGuard('bearer'))
+  @UseGuards(AuthGuard())
   getUsers() {
     return [];
   }
