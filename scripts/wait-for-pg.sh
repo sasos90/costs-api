@@ -5,8 +5,8 @@ maxcounter=50
 set -e
 
 db_host="$1"
-db_port="$2"
-shift 2
+#db_port="$2"
+shift 1
 cmd="$@"
 
 counter=1
