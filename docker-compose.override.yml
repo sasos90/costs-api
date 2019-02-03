@@ -8,18 +8,18 @@ services:
     depends_on:
       - postgres
     environment:
-      - POSTGRES_USER=pgcosts
-      - POSTGRES_PASSWORD=123
-      - POSTGRES_DB=costs
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
     volumes:
       - modules:/usr/src/app/node_modules
       - ./:/usr/src/app
   postgres:
     image: postgres:11-alpine
     environment:
-      - POSTGRES_USER=pgcosts
-      - POSTGRES_PASSWORD=123
-      - POSTGRES_DB=costs
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
     volumes:
       - pg_data:/var/lib/postgresql/data
   adminer:
