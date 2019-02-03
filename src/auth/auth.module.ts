@@ -5,11 +5,10 @@ import { UsersModule } from '../users/users.module';
 import { AuthController } from './auth.controller';
 import { PassportModule } from '@nestjs/passport';
 
+export const passportOptions = { defaultStrategy: 'bearer', property: 'user' };
+
 @Module({
-  imports: [
-    PassportModule.register({ defaultStrategy: 'bearer' }),
-    UsersModule,
-  ],
+  imports: [PassportModule.register(passportOptions), UsersModule],
   providers: [AuthService, HttpStrategy],
   controllers: [AuthController],
 })
