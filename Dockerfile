@@ -7,6 +7,8 @@ COPY . ./
 RUN npm install
 RUN npm run build
 
+RUN apk add postgresql-client
+
 EXPOSE 3000
 
 CMD ["npm", "run", "start:prod"]

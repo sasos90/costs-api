@@ -4,15 +4,24 @@ services:
     build: .
     ports:
       - 3000:3000
+    command: ["./scripts/wait-for-pg.sh", "postgres", "5432", "npm", "run", "start:prod"]
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_USER=pgcosts
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=costs
     volumes:
       - modules:/usr/src/app/node_modules
       - ./:/usr/src/app
   postgres:
     image: postgres:11-alpine
-    depends_on:
-      - backend
     environment:
+      - POSTGRES_USER=pgcosts
       - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=costs
+    volumes:
+      - pg_data:/var/lib/postgresql/data
   adminer:
     image: adminer
     depends_on:
@@ -22,3 +31,4 @@ services:
       - 8080:8080
 volumes:
   modules:
+  pg_data:
