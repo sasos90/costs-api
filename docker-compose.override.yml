@@ -4,7 +4,7 @@ services:
     build: .
     ports:
       - 3000:3000
-    command: ["./scripts/wait-for-pg.sh", "postgres", "npm", "run", "start:prod"]
+    command: ["./scripts/wait-for-pg.sh", "postgres", "pm2-runtime", "start", "dist/main.js"]
     depends_on:
       - postgres
     environment:
